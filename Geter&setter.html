@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Assignment 10.2</title>
+    <script>
+        class Airplane { //defining a class Airplane
+            constructor(name, occupancy, speed){ //with name, occupancy, speed and initializing them in constructor
+                this.name = name;
+                this.occupancy = occupancy;
+                this.speed = speed;
+            }            
+            set validateName(value){ //validating the Airplane 
+                this.name = value;
+                if(this.name==" "){
+                console.log("Name cannot be empty")                
+                }
+                else console.log("Valid Airoplane Name is set:", this.name);
+            }            
+            set validateOccupany(value){
+                this.occupancy = value;
+                if(this.occupancy==""||this.occupancy<0||this.occupancy>180){
+                console.log("Please Enter occupancy details between 1 to 180");               
+                }
+                else console.log("Occupancy is", this.occupancy);
+            }
+            set validateSpeed(value){
+                this.speed = value;
+            }
+            get validSpeed(){ //using get to validate
+                if(this.speed==""||this.speed<0||this.speed>900){
+                console.log("Please Enter speed details between 1 to 900");
+                }
+                else console.log("Speed is", this.speed);
+            }           
+            status(){
+                console.log(`"Airplane:${this.name} with ${this.occupancy}, is moving at ${this.speed} km/hr."`);
+            }
+            increaseSpeed(value){
+                this.speed+=value;
+                console.log(`"Speed increased by ${value} new speed is: ${this.speed}"`);
+            }
+            decreaseSpeed(value){
+                this.speed-=value;
+                console.log(`"Speed Decreased by ${value} new speed is: ${this.speed}"`);
+            }
+        }
+        
+        var x = new Airplane("Boeing", 180,800); //create a new object & pass the above read values to the class constructor
+        console.log("\n"+"Creating 1st airoplane, and calling print method");
+        x.status();
+        console.log("\n"+"Creating 2nd airoplane");
+        var y = new Airplane();
+        console.log("\n"+"To validate the airoplane, giving invalid inputs below"+"\n"+"\n");
+        y.validateName = " ";
+        y.validateOccupany = -1;
+        y.validateSpeed = 0;
+        y.validSpeed; //calls get validSpeed at line 36
+        console.log("\n"+"using get & set ");
+        y.validateSpeed = 2;
+        y.validSpeed;
+        console.log("\n"+"Now calling status method prints the output with invalid proerties"+"\n"+"\n");
+        y.status();
+        console.log("\n"+"Again setting the name"+"\n"+"\n");
+        y.validateName = "Gruman";
+        y.status();
+        console.log("\n"+"Creating third Airoplane object"+"\n"+"\n");
+        var z = new Airplane("Franklin", 180, 750);
+        z.status();
+        z.increaseSpeed(200)
+        console.log("After increase, New speed is "+z.speed);
+        z.decreaseSpeed(200)
+        console.log("After decrease, speed is "+z.speed);
+    </script>
+</head>
+</html>
